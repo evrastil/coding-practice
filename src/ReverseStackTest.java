@@ -59,6 +59,10 @@ public class ReverseStackTest {
         reversedIntegerStack.forEach(System.out::println);
     }
 
+    /**
+     * integerStack.remove(actual) not allowed but works.
+     * @return
+     */
     @Deprecated
     public Stack<Integer> reverseStack(Stack<Integer> integerStack) {
         if (integerStack.isEmpty()) return integerStack;
@@ -75,7 +79,9 @@ public class ReverseStackTest {
     }
 
 
-
+    /**
+     * User recursion to emty stack and store temp to recursive stack, then call insert at bottom.
+     */
     public Stack<Integer> reverse(Stack<Integer> stack) {
         if (stack.isEmpty()) return stack;
         int temp = stack.pop();
@@ -84,6 +90,9 @@ public class ReverseStackTest {
         return stack;
     }
 
+    /**
+     *  Resucrse to empty stack ans store tam to call stack then push temp to the bottom
+     */
     private void insertAtBottom(Stack<Integer> stack, int x) {
         if (stack.isEmpty()) {
             stack.push(x);
