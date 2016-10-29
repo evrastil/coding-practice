@@ -20,7 +20,7 @@ public class ReverseLinkedListTest {
 
     }
 
-    static class Node{
+    private class Node{
         Node next;
         int value;
 
