@@ -40,9 +40,6 @@ public class ComputeFibonacciTest {
         if (cache.containsKey(n)) {
             return cache.get(n);
         }
-        cache.put(n - 1, fibonacciDynamic(n - 1, cache));
-        cache.put(n - 2, fibonacciDynamic(n - 2, cache));
-
         long fib = fibonacciDynamic(n - 1, cache) + fibonacciDynamic(n - 2, cache);
         System.out.println(fib);
         cache.put(n, fib);
