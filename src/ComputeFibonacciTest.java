@@ -12,10 +12,10 @@ public class ComputeFibonacciTest {
     public void testComputeFibonacci() {
         //add adjacent numbers to get to next n times
         // fiboncci(10) = 1+1+2+3+5+8+13+21+34+55
-        long fibonacci = fibonacci(10);
+        long fibonacci = fibonacciRecursive(10);
         System.out.println(fibonacci);
         Assert.assertTrue(fibonacci == 55);
-        long fibonacci1 = fibonacci(9);
+        long fibonacci1 = fibonacciRecursive(9);
         System.out.println(fibonacci1);
         Assert.assertTrue(fibonacci1 == 34);
 
@@ -23,6 +23,22 @@ public class ComputeFibonacciTest {
         long fibonacci2 = fibonacciDynamic(9);
         System.out.println(fibonacci2);
         Assert.assertTrue(fibonacci2 == 34);
+
+        long fibonacci3 = fibonacciBottomUp(9);
+        System.out.println(fibonacci3);
+        Assert.assertTrue(fibonacci3 == 34);
+    }
+
+    public int fibonacciBottomUp(int n) {
+        int[] cache = new int[n+1];
+        cache[0] = 1;
+        cache[1] = 1;
+        for (int i = 2; i < n; i++) {
+            cache[i] = cache[i - 1] + cache[i - 2];
+
+        }
+        return cache[n-1];
+
     }
 
     public long fibonacciDynamic(Integer n) {
@@ -33,9 +49,6 @@ public class ComputeFibonacciTest {
         return fibonacciDynamic(n, cache);
     }
 
-    /**
-     * dynamic programming
-     */
     private long fibonacciDynamic(Integer n, HashMap<Integer, Long> cache) {
         if (cache.containsKey(n)) {
             return cache.get(n);
@@ -47,14 +60,14 @@ public class ComputeFibonacciTest {
     }
 
     // not efficient but short ;)
-    public long fibonacci(long n) {
+    public long fibonacciRecursive(long n) {
         if (n == 0) {
             return 0;
         }
         if (n == 1) {
             return 1;
         }
-        long out = fibonacci(n - 1) + fibonacci(n - 2);
+        long out = fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
         System.out.println(out);
         return out;
     }
