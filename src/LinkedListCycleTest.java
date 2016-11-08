@@ -1,8 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Given a linked list, determine whether it contains a cycle
@@ -10,11 +9,10 @@ import java.util.List;
  * 1 -> 2 -> 3 -> 4
  * ^         |
  * |_________|
- *
  */
 public class LinkedListCycleTest {
     @Test
-    public void testCycleInList(){
+    public void testCycleInList() {
         Node node1 = new Node(1);
         Node node2 = new Node(2);
         Node node3 = new Node(3);
@@ -27,36 +25,24 @@ public class LinkedListCycleTest {
     }
 
     private boolean isCycleInLinkedList(Node node) {
-        if(node == null || node.children.isEmpty()){
-            return false;
-        }
-
-
-        for (Node child : node.children) {
-            ArrayList<Node> visitedNodes = new ArrayList<>();
-            if(traverseTree(child, visitedNodes)){
-                return true;
+        Queue<Node> toVisitQueue = new LinkedList<>();
+        Map<Node, Node> visitedMap = new HashMap<>();
+        toVisitQueue.add(node);
+        while (!toVisitQueue.isEmpty()) {
+            Node temp = toVisitQueue.poll();
+            for (Node child : temp.children) {
+                if (visitedMap.containsKey(child)) {
+                    return true;
+                }
+                toVisitQueue.add(child);
+                visitedMap.put(node, node);
             }
         }
         return false;
     }
 
-    private boolean traverseTree(Node node, List<Node> visitedNodes){
-        for (Node visitedNode : visitedNodes) {
-            if(node.value == visitedNode.value){
-                return true;
-            }
-            visitedNodes.add(node);
-            traverseTree(visitedNode, visitedNodes);
 
-        }
-
-        return false;
-    }
-
-
-
-    private class Node{
+    private class Node {
         int value;
 
         Node(int value) {
@@ -65,4 +51,43 @@ public class LinkedListCycleTest {
 
         private List<Node> children = new ArrayList<>();
     }
+
+/**
+ * 1 -> 2 -> 3 -> 4
+ *      ^         |
+ *      |_________|
+ */
+//    private class Node{
+//        int val;
+//        Node next;
+//    }
+
+    // Algorithm using extra space. Mark visited nodes and check that you
+// only visit each node once.
+//    public boolean hasCycle(Node n) {
+//        HashSet<Node> visited = new HashSet<Node>();
+//        for (Node curr = n; curr != null; curr = curr.next) {
+//            if (visited.contains(curr)) return true;
+//            visited.add(curr);
+//        }
+//
+//        return false;
+//    }
+
+    // Floyd's algorithm. Increment one pointer by one and the other by two.
+// If they are ever pointing to the same node, there is a cycle.
+// Explanation: https://www.quora.com/How-does-Floyds-cycle-finding-algorithm-work
+//    public boolean hasCycleFloyd(Node n) {
+//        if (n == null) return false;
+//        Node slow = n;
+//        Node fast = n.next;
+//
+//        while (fast != null && fast.next != null) {
+//            if (fast == slow) return true;
+//            fast = fast.next.next;
+//            slow = slow.next;
+//        }
+//
+//        return false;
+//    }
 }
