@@ -31,9 +31,12 @@ public class LinkedListCycleTest {
             return false;
         }
 
-        ArrayList<Node> visitedNodes = new ArrayList<>();
+
         for (Node child : node.children) {
-            traverseTree(child, visitedNodes);
+            ArrayList<Node> visitedNodes = new ArrayList<>();
+            if(traverseTree(child, visitedNodes)){
+                return true;
+            }
         }
         return false;
     }
