@@ -1,16 +1,18 @@
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class PrimeNumbersTest {
     /**
      * 1. One solution and optimizations:
-     *  - Only even prime number is 2
-     *  - All numbers a factors of prime numbers so check only division by prime numbers
-     *  - Only check up to square root (druha odmocnina) of number, because it is always in the first middle of factors (nasobku cisla),
-     *    it is only good enough to find first factor and it it doesn't exist the second doest exist either
-     *
+     * - Only even prime number is 2
+     * - All numbers a factors of prime numbers so check only division by prime numbers
+     * - Only check up to square root (druha odmocnina) of number, because it is always in the first middle of factors (nasobku cisla),
+     * it is only good enough to find first factor and it it doesn't exist the second doest exist either
+     * <p>
      * 2. Second solution is to go trough array of numbers N from prime number 2 and cross out all factors of that number
      * then go to next number which is by definition prime and cross out all factors etc. etc.
      */
@@ -29,6 +31,7 @@ public class PrimeNumbersTest {
         }
     }
 
+    //    1.
     private boolean isPrime(int num) {
         if (num == 1) return false;
         if (num == 2) return true;
@@ -50,5 +53,28 @@ public class PrimeNumbersTest {
         System.out.println("prime number: " + num);
         return true;
     }
+
+    //    2.
+// will contain true or false values for the first 10,000 integers
+    boolean[] primes = new boolean[10000];
+
+    //set up the primesieve
+    public void fillSieve() {
+        Arrays.fill(primes, true);        // assume all integers are prime.
+        primes[0] = primes[1] = false;       // we know 0 and 1 are not prime.
+        for (int i = 2; i < primes.length; i++) {
+            //if the number is prime,
+            //then go through all its multiples and make their values false.
+            if (primes[i]) {
+                for (int j = 2; i * j < primes.length; j++) {
+                    primes[i * j] = false;
+                }
+            }
+        }
+    }
+
+//    public boolean isPrime(int n) {
+//        return primes[n]; //simple, huh?
+//    }
 
 }
