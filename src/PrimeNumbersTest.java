@@ -58,7 +58,7 @@ public class PrimeNumbersTest {
 // will contain true or false values for the first 10,000 integers
     boolean[] primes = new boolean[10000];
 
-    //set up the primesieve
+    //set up the prime sieve
     public void fillSieve() {
         Arrays.fill(primes, true);        // assume all integers are prime.
         primes[0] = primes[1] = false;       // we know 0 and 1 are not prime.

@@ -21,22 +21,26 @@ public class RestoreSpacesInSentenceTest {
 
     @Test
     public void testRestoreSentence() {
-        String[] dictionary = new String[]{"i", "hate", "sam", "sung", "samsung", "mobile", "ice", "cream", "icecream", "man", "go", "mango" };
-        String mess = "manihatemobilesamsung";
-        restore(mess, dictionary, "");
+        String[] dictionary = new String[]{"to", "je", "co", "auto", "ma", "automat", "tojota", "au"};
+        String mess = "tojotajetoautocomaautomat";
+        restore(mess, mess.length(), dictionary, "");
     }
 
-    public void restore(String mess, String[] dictionary, String result) {
-        for (int i = 1; i <= mess.length(); i++) {
+    public void restore(String mess, int messLength, String[] dictionary, String result) {
+        for (int i = 1; i <= messLength; i++) {
             String substring = mess.substring(0, i);
             for (int j = 0; j < dictionary.length; j++) {
                 String word = dictionary[j];
                 if (word.equals(substring)) {
-                    result = result + " " + word;
-                    restore(mess.substring(i, mess.length()), dictionary, result);
+                    if (i == messLength) {
+                        System.out.println(result);
+                        return;
+                    }
+                    result = result + word + " ";
+                    restore(mess.substring(i, messLength-1), messLength-1, dictionary, result);
                 }
             }
         }
-        System.out.println(result);
+
     }
 }
