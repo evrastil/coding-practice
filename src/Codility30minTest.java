@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-public class CodilityTest {
+public class Codility30minTest {
 
     @Test
     public void testIt(){
