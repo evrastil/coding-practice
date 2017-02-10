@@ -4,8 +4,8 @@ public class CodilityCyclicRotationTest {
 
     @Test
     public void testIt() {
-        int[] arr = new int[]{3, 8, 9, 7, 6, 1};
-        int[] solution = solution(arr, 8);
+        int[] arr = new int[]{3, 8, 9, 7, 6};
+        int[] solution = solution(arr, 1);
         for (int i = 0; i < solution.length; i++) {
             System.out.println(solution[i]);
         }
@@ -13,17 +13,28 @@ public class CodilityCyclicRotationTest {
     }
 
     public int[] solution(int[] A, int K) {
-        int resultArr[] = new int[A.length];
-        if(K>A.length){
-            K= K-A.length;
+        if(A == null || A.length == 0){
+            return new int[0];
         }
-        for (int i = 0; i < A.length + 1; i++) {
-            if (i >= K) {
-                resultArr[i - K] = A[i - 1];
-            } else if (i < K && i + K < A.length) {
-                resultArr[i + K] = A[i];
+        if (K > A.length) {
+            int floor = K / A.length;
+            K = K - floor * A.length;
+        }
+        int left = A.length - K;
+        int[] leftArr = new int[left];
+        for (int i = 0; i < A.length; i++) {
+            if (i < left) {
+                leftArr[i] = A[i];
+            } else {
+                A[i - left] = A[i];
             }
         }
-        return resultArr;
+        for (int i = 0, j = 0; i < A.length; i++) {
+            if (i >= K) {
+                A[i] = leftArr[j];
+                j++;
+            }
+        }
+        return A;
     }
 }
