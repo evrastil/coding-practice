@@ -35,6 +35,9 @@ public class ArrayEquilibriumTest {
         return -1;
     }
 
+    /**
+     * O(1) space O(n) time
+     */
     private int findAnyEquilibriumIndex2(int[] array, int arrayLength) {
         int arraySum = 0;
         for (int i = 0; i < arrayLength; i++) {
