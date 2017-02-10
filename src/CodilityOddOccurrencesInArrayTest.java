@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public class CodilityOddOccurrencesInArrayTest {
         System.out.printf(String.valueOf(solution(arr)));
     }
 
-    public int solution(int[] A) {
+    public int solutionA(int[] A) {
         if (A != null) {
             HashMap<Integer, Integer> map = new HashMap<>();
             for (int i = 0; i < A.length; i++) {
@@ -33,5 +34,20 @@ public class CodilityOddOccurrencesInArrayTest {
             }
         }
         return 0;
+    }
+
+    public int solution(int[] A) {
+        Arrays.sort(A);
+        for (int i = 0; i < A.length; i++) {
+            if (i + 1 <= A.length - 1 && A[i] == A[i + 1]) {
+                continue;
+            }
+            if (i - 1 >= 0 && A[i] == A[i - 1]) {
+                continue;
+            }
+            return A[i];
+        }
+        return 0;
+
     }
 }
