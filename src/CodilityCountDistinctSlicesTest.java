@@ -10,7 +10,7 @@ public class CodilityCountDistinctSlicesTest {
     }
 
     public int solution(int M, int[] A) {
-        int ans = 0, pre = 0;
+        int ans = 0, pre = -1;
         int[] hash = new int[M + 1];
         for (int i = 0; i < hash.length; i++) {
             hash[i] = -1;
