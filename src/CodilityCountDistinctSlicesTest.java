@@ -10,19 +10,19 @@ public class CodilityCountDistinctSlicesTest {
     }
 
     public int solution(int M, int[] A) {
-        int ans = 0, pre = -1;
-        int[] hash = new int[M + 1];
-        for (int i = 0; i < hash.length; i++) {
-            hash[i] = -1;
+        int result = 0, left = -1;
+        int[] foundArr = new int[M + 1];
+        for (int i = 0; i < foundArr.length; i++) {
+            foundArr[i] = -1;
         }
-        for (int i = 0; i < A.length; i++) {
-            if (hash[A[i]] > pre) {
-                pre = hash[A[i]];
+        for (int right = 0; right < A.length; right++) {
+            if (foundArr[A[right]] > left) {
+                left = foundArr[A[right]];
             }
-            ans += i - pre;
-            hash[A[i]] = i;
+            result += right - left;
+            foundArr[A[right]] = right;
         }
-        return ans;
+        return result;
 
     }
 
