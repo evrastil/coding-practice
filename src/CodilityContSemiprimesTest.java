@@ -6,7 +6,8 @@ import java.util.Arrays;
  * Created by vrastil on 17.2.2017.
  */
 public class CodilityContSemiprimesTest {
-
+    //prime numbers
+    //2,3,5,7,11,13,17,19,23,29,31 ....
     @Test
     public void testIt() {
         int[] P = new int[]{1, 4, 16};
