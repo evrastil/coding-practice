@@ -12,7 +12,7 @@ public class CodilityOddOccurrencesInArrayTest {
     @Test
     public void testIt() {
         int[] arr = new int[]{2, 3, 3, 2, 4};
-        System.out.printf(String.valueOf(solution(arr)));
+        System.out.printf(String.valueOf(solutionC(arr)));
     }
 
     public int solutionA(int[] A) {
@@ -49,5 +49,14 @@ public class CodilityOddOccurrencesInArrayTest {
         }
         return 0;
 
+    }
+
+    //correct solution
+    public int solutionC(int[] A) {
+        int missing = 0;
+        for (int i = 0; i < A.length; i++) {
+            missing ^= A[i];
+        }
+        return missing;
     }
 }
