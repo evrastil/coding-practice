@@ -1,28 +1,27 @@
 import org.junit.Test;
 
-import java.util.LinkedList;
 import java.util.Stack;
 
 /**
  * Created by vrastil on 18.2.2017.
  */
-public class CodililtyTest1 {
+public class CodililtyStackMachine {
     @Test
     public void testìT() {
-        System.out.println(getSolution2("99*9*9*9*9*9*9*9*9*9*9*9*9"));
+        System.out.println(solution("13+62*7+*"));
     }
 
 
-    public int getSolution2(String S) {
+    public int solution(String s) {
 
-        if (S == null || S.length() == 0) {
+        if (s == null || s.length() == 0) {
             return -1;
         }
 
-        Stack<Integer> stack = new Stack();
+        Stack<Integer> stack = new Stack<>();
 
-        for (int i = 0; i < S.length(); ++i) {
-            char character = S.charAt(i);
+        for (int i = 0; i < s.length(); ++i) {
+            char character = s.charAt(i);
 
             if (character >= '0' && character <= '9') {
                 stack.push(character - '0');

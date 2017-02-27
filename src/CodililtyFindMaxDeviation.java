@@ -3,9 +3,9 @@ import org.junit.Test;
 /**
  * Created by vrastil on 18.2.2017.
  */
-public class CodililtyTest2 {
+public class CodililtyFindMaxDeviation {
     @Test
-    public void  testìT(){
+    public void testiT(){
         int[] arr = new int[]{9,4,-3,-10};
         System.out.println(solution(arr));
     }

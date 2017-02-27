@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Created by vrastil on 18.2.2017.
  */
-public class CodililtyTest3 {
+public class CodililtyCountComplements {
     @Test
     public void testìT() {
         int arr[] = new int[]{1, 8, -3, 0, 1, 3, -2, 4, 5};
@@ -30,7 +30,7 @@ public class CodililtyTest3 {
         for (Integer number : numbers) {
             int complement = K - number;
             if (numberCount.containsKey(complement)) {
-                numOfComplements += numberCount.get(number) * numberCount.get(complement);//multiply occurence num counts to get num of complements
+                numOfComplements += numberCount.get(number) * numberCount.get(complement);//multiply occurrence num counts to get num of complements
             }
         }
 
