@@ -1,8 +1,6 @@
 import org.junit.Test;
 
-import java.util.PriorityQueue;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by eda on 28.2.17.
@@ -14,9 +12,14 @@ public class QueueAndTreeTest {
         priorityQueue.peek();
         priorityQueue.spliterator();
         TreeMap treeMap = new TreeMap();
-        treeMap.floorEntry();
-        treeMap.pollFirstEntry()
+//        treeMap.floorEntry();
+//        treeMap.pollFirstEntry()
         TreeSet treeSet = new TreeSet();
+        Queue queue = new LinkedList();
+//        queue.offer()
+
+        Stack stack = new Stack();
+
 
     }
 }
