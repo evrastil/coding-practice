@@ -19,6 +19,14 @@ public class QueueAndTreeTest {
 //        queue.offer()
 
         Stack stack = new Stack();
+        while (!stack.empty()) {
+            stack.pop();
+
+        }
+        Map<Integer, Integer> map = new HashMap<>();
+        for (Integer integer : map.values()) {
+
+        }
 
 
     }
