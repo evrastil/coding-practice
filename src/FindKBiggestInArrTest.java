@@ -9,20 +9,24 @@ public class FindKBiggestInArrTest {
         System.out.println(i);
     }
 
+    //bubble sort
     public int findKBiggest(int K, int[] arr) {
         if (K > arr.length) {
             return -1;
         }
-        for (int j = 0; j < arr.length; j++) {
-            for (int i = 0; i < arr.length; i++) {
-                if (arr[j] > arr[i]) {
+        boolean allSwapped = false;
+        while (!allSwapped) {
+            allSwapped = true;
+            for (int i = 0; i < arr.length - 1; i++) {
+                if (arr[i + 1] > arr[i]) {
+                    allSwapped = false;
                     int temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
                 }
             }
         }
-        return arr[K-1];
+        return arr[K - 1];
     }
 
 
