@@ -1,8 +1,5 @@
 import org.junit.Test;
 
-/**
- * Created by vrastil on 11.2.2017.
- */
 public class CodilityFundMissingPermutationTest {
 
     @Test
