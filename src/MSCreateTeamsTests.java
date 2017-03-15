@@ -18,26 +18,20 @@ public class MSCreateTeamsTests {
         Map<String, List<String>> peopleWithSkills = new HashMap<String, List<String>>();
         peopleWithSkills.put("Person1", new ArrayList<String>() {{
             add("Skill1");
-            add("Skill2");
+            add("Skill6");
             add("Skill3");
         }});
         peopleWithSkills.put("Person2", new ArrayList<String>() {{
-            add("Skill1");
+            add("Skill2");
             add("Skill4");
             add("Skill3");
         }});
         peopleWithSkills.put("Person3", new ArrayList<String>() {{
+            add("Skill1");
             add("Skill2");
             add("Skill5");
         }});
-        peopleWithSkills.put("Person4", new ArrayList<String>() {{
-            add("Skill1");
-        }});
-        peopleWithSkills.put("Person5", new ArrayList<String>() {{
-            add("Skill1");
-            add("Skill2");
-            add("Skill9");
-        }});
+
         List<String> res1 = findPeopleWithSkill("Skill1", peopleWithSkills);
         System.out.println(res1);
         List<String> res2 = findPeopleWithSkills(new ArrayList<String>() {{
@@ -45,6 +39,12 @@ public class MSCreateTeamsTests {
             add("Skill2");
         }}, peopleWithSkills);
         System.out.println(res2);
+
+        Map<String, List<String>> teamsWithSkills = createTeamsWithSkills(new ArrayList<String>() {{
+            add("Skill1");
+            add("Skill2");
+        }}, peopleWithSkills);
+        System.out.println(teamsWithSkills);
     }
 
     public List<String> findPeopleWithSkill(String skill, Map<String, List<String>> peopleWithSkills) {
@@ -76,16 +76,38 @@ public class MSCreateTeamsTests {
         }
         return result;
     }
+    /*
+    * Not correct.
+    */
 
     public Map<String, List<String>> createTeamsWithSkills(List<String> expectedSkillsInTeam, Map<String, List<String>> peopleWithSkills) {
         Map<String, List<String>> teams = new HashMap<>();
-        teams.put("team1", new ArrayList<>());
-        List<String> people = new ArrayList<>();
+        Map<String, Integer> people = new HashMap<>();
         for (Map.Entry<String, List<String>> entry : peopleWithSkills.entrySet()) {
             for (String skill : expectedSkillsInTeam) {
-                if (entry.getValue().contains(skill)) {
-                    people.add(entry.getKey());
+                for (String s : entry.getValue()) {
+                    if (s.equals(skill)) {
+                        if (people.containsKey(entry.getKey())) {
+                            people.put(entry.getKey(), people.get(entry.getKey()) + 1);
+                        } else {
+                            people.put(entry.getKey(), 1);
+                        }
+                    }
                 }
+            }
+        }
+        int teamCount = 0;
+        for (Integer skillCount : people.values()) {
+            teamCount += skillCount;
+        }
+
+        for (int i = 1; i <= teamCount; i++) {
+            teams.put("team" + i, new ArrayList<>());
+        }
+
+        for (Map.Entry<String, Integer> c : people.entrySet()) {
+            for (Map.Entry<String, List<String>> team : teams.entrySet()) {
+                team.getValue().add(c.getKey());
             }
         }
 
