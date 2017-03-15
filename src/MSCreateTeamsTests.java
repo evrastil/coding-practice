@@ -77,7 +77,7 @@ public class MSCreateTeamsTests {
         return result;
     }
     /*
-    * Not correct.
+    * May be not correct.
     */
 
     public Map<String, List<String>> createTeamsWithSkills(List<String> expectedSkillsInTeam, Map<String, List<String>> peopleWithSkills) {
