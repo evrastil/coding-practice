@@ -26,18 +26,17 @@ public class RestoreSpacesInSentenceTest {
         restore(mess, dictionary, "");
     }
 
-    public void restore(String mess, String[] dictionary, String result) {
-        for (int i = 1; i <= mess.length(); i++) {
-            String substring = mess.substring(0, i);
-            for (int j = 0; j < dictionary.length; j++) {
-                String word = dictionary[j];
+    public void restore(String stringWithoutSpaces, String[] dictionary, String result) {
+        for (int i = 1; i <= stringWithoutSpaces.length(); i++) {
+            String substring = stringWithoutSpaces.substring(0, i);
+            for (String word : dictionary) {
                 if (word.equals(substring)) {
                     result = result + word + " ";
-                    if (i == mess.length()) {
+                    if (i == stringWithoutSpaces.length()) {
                         System.out.println(result);
                         return;
                     }
-                    restore(mess.substring(i, mess.length()), dictionary, result);
+                    restore(stringWithoutSpaces.substring(i, stringWithoutSpaces.length()), dictionary, result);
                 }
             }
         }
