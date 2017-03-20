@@ -29,6 +29,7 @@ public class LinkedListCycleTest {
         node2.next = node3;
         node3.next = node4;
         node4.next = node2;
+        System.out.println(isCycleInLinkedList(node1));
         System.out.println(isCycleInLinkedList2(node1));
     }
 
@@ -36,7 +37,7 @@ public class LinkedListCycleTest {
     private boolean isCycleInLinkedList(Node node) {
         Set<Node> visited = new HashSet<>();
         Node temp = node;
-        while (temp.next != null) {
+        while (temp != null) {
             if (visited.contains(temp)) {
                 return true;
             }
