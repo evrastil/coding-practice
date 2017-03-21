@@ -10,7 +10,7 @@ import java.util.Set;
  */
 public class CodililtyCountComplements {
     @Test
-    public void testìT() {
+    public void testIt() {
         int arr[] = new int[]{1, 8, -3, 0, 1, 3, -2, 4, 5};
         System.out.println(solution(6, arr));
     }
