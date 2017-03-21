@@ -1,4 +1,4 @@
-package practice;
+package practice.microsoft;
 
 import org.junit.Test;
 

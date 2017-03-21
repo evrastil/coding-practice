@@ -1,4 +1,4 @@
-package practice;
+package practice.codility;
 
 import org.junit.Test;
 

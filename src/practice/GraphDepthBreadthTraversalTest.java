@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-public class TreeTraversalTest {
+public class GraphDepthBreadthTraversalTest {
 
     class Node {
         Node left;
