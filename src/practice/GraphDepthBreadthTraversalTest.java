@@ -44,7 +44,18 @@ public class GraphDepthBreadthTraversalTest {
         depth(node7);
         System.out.println("\n");
         breadth(node7);
+        depthRecursive(node7);
     }
+
+    public void depthRecursive(Node node) {
+        if(node == null){
+            return;
+        }
+        System.out.println("dr-"+String.valueOf(node.val));
+        depthRecursive(node.left);
+        depthRecursive(node.right);
+    }
+
 
     public void depth(Node node) {
         Stack<Node> stack = new Stack<>();
