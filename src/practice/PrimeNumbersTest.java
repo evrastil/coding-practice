@@ -60,6 +60,16 @@ public class PrimeNumbersTest {
 // will contain true or false values for the first 10,000 integers
     boolean[] primes = new boolean[10000];
 
+    boolean isPrime2(int n) {
+        //check if n is a multiple of 2
+        if (n%2==0) return false;
+        //if not, then just check the odds
+        for(int i=3;i*i<=n;i+=2) {
+            if(n%i==0)
+                return false;
+        }
+        return true;
+    }
     //set up the prime sieve
     public void fillSieve() {
         Arrays.fill(primes, true);        // assume all integers are prime.
