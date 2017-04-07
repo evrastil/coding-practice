@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class BinarySearchTest {
     @Test
-    public void itestIt() {
+    public void testIt() {
         //must be sorter array
         int[] ints = {-9, 14, 37, 102};
         System.out.println(binarySearch(ints, 37));
