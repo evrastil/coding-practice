@@ -24,7 +24,7 @@ public class TaxCalculatorTest {
     class TaxCalculator {
         List<Rate> rates;
 
-        public TaxCalculator(List<Rate> rates) {
+        TaxCalculator(List<Rate> rates) {
             this.rates = rates;
 
         }
@@ -49,7 +49,7 @@ public class TaxCalculatorTest {
         double amount;
         double tax;
 
-        public Rate(double amount, double tax) {
+        Rate(double amount, double tax) {
             this.amount = amount;
             this.tax = tax;
         }
