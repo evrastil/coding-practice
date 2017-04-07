@@ -1,4 +1,4 @@
-package practice;
+package practice.netsuite;
 
 import org.junit.Test;
 

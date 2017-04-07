@@ -1,4 +1,4 @@
-package practice;
+package practice.sorting;
 
 public class MergSortImpl {
     private int[] numbers;

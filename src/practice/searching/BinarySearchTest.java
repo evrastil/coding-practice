@@ -1,4 +1,4 @@
-package practice;
+package practice.searching;
 
 import org.junit.Test;
 
