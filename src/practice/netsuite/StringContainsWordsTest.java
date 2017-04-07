@@ -14,6 +14,7 @@ public class StringContainsWordsTest {
         Set<String> words = new HashSet<>();
         containsWords("abc", dict, words);
         System.out.println(words);
+        System.out.println(canBeSeparatedIntoWords("abcd", dict));
     }
 
     void containsWords(String str, String[] dict, Set<String> words) {
@@ -30,5 +31,21 @@ public class StringContainsWordsTest {
             containsWords(str.substring(0, length - i), dict, words);
             containsWords(str.substring(i, length), dict, words);
         }
+    }
+
+    boolean canBeSeparatedIntoWords(String str, String[] dict) {
+        int length = str.length();
+        if (length == 0) {
+            return true;
+        }
+        for (int i = 0; i < dict.length; i++) {
+            if (dict[i].equals(str)) {
+                return true;
+            }
+        }
+        for (int i = 1; i < str.length(); i++) {
+            return canBeSeparatedIntoWords(str.substring(0, length - i), dict) && canBeSeparatedIntoWords(str.substring(i, length), dict);
+        }
+        return false;
     }
 }

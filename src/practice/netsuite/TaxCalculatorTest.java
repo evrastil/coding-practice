@@ -18,17 +18,13 @@ public class TaxCalculatorTest {
         double netIncome = taxCalculator.calculate(2100);
         System.out.println(netIncome);
         Assert.assertTrue(1780 == netIncome);
-
     }
 
     class TaxCalculator {
         List<Rate> rates;
-
         TaxCalculator(List<Rate> rates) {
             this.rates = rates;
-
         }
-
         public double calculate(double grossIncome) {
             double totalNetResult = 0;
             double calcReminder = grossIncome;
@@ -39,20 +35,16 @@ public class TaxCalculatorTest {
                 totalNetResult += taxableRange * rate.tax;
                 calcReminder -= taxableRange;
                 rateIndex++;
-
             }
             return totalNetResult;
         }
     }
-
     class Rate {
         double amount;
         double tax;
-
         Rate(double amount, double tax) {
             this.amount = amount;
             this.tax = tax;
         }
     }
-
 }
