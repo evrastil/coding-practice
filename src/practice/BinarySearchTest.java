@@ -18,13 +18,13 @@ public class BinarySearchTest {
         if (high < low) {
             return -1; // not found
         }
-        int mid = low + ((high - low) / 2);
-        if (ints[mid] > k) {
-            return binarySearchRecursive(ints, k, low, mid - 1);
-        } else if (ints[mid] < k) {
-            return binarySearchRecursive(ints, k, mid + 1, high);
+        int middle = low + ((high - low) / 2);
+        if (ints[middle] > k) {
+            return binarySearchRecursive(ints, k, low, middle - 1);
+        } else if (ints[middle] < k) {
+            return binarySearchRecursive(ints, k, middle + 1, high);
         } else {
-            return mid; // found
+            return middle; // found
         }
     }
 
@@ -37,7 +37,7 @@ public class BinarySearchTest {
                 low = middle + 1;
             else if (ints[middle] == k) {
 //                System.out.println(k + " found at location " + (middle + 1) + ".");
-                break;
+                break;//found
             } else {
                 high = middle - 1;
             }
