@@ -9,9 +9,10 @@ public class BinarySearchTest {
     public void testIt() {
         //must be sorter array
         int[] ints = {-9, 14, 37, 102};
-        System.out.println(binarySearch(ints, 37));
+        System.out.println(binarySearchIterative(ints, 37));
+        System.out.println(binarySearchRecursive(ints, 37, 0, ints.length - 1)>-1);
         //use standard jse lib
-        System.out.println(Arrays.binarySearch(ints, 36) > -1);
+        System.out.println(Arrays.binarySearch(ints, 37) > -1);
     }
 
     int binarySearchRecursive(int[] ints, int k, int low, int high) {
@@ -28,7 +29,7 @@ public class BinarySearchTest {
         }
     }
 
-    boolean binarySearch(int[] ints, int k/*, int low, int high*/) {
+    boolean binarySearchIterative(int[] ints, int k) {
         int low = 0;
         int high = ints.length - 1;
         int middle = (low + high) / 2;
