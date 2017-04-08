@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class BinarySearchTest {
+public class BinarySearchArrTest {
     @Test
     public void testIt() {
         //must be sorter array
