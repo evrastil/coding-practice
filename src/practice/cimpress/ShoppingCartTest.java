@@ -59,7 +59,7 @@ public class ShoppingCartTest {
             double discount = 0;
             double total = 0;
             for (Coupon coupon : extractCoupons()) {
-                discount += coupon.apply(items);
+                discount += coupon.calculateDiscount(items);
             }
             for (Item item : items) {
                 if (item instanceof CartItem) {
@@ -74,7 +74,7 @@ public class ShoppingCartTest {
     }
 
     interface Coupon extends Item {
-        double apply(List<Item> items);
+        double calculateDiscount(List<Item> items);
     }
 
     class ItemNextCoupon implements Coupon {
@@ -82,7 +82,7 @@ public class ShoppingCartTest {
          * Apply to next item
          */
         @Override
-        public double apply(List<Item> items) {
+        public double calculateDiscount(List<Item> items) {
             double discount = 0;
             double discountRate = 0;
             for (Item item : items) {
@@ -105,7 +105,7 @@ public class ShoppingCartTest {
          * Apply to all items
          */
         @Override
-        public double apply(List<Item> items) {
+        public double calculateDiscount(List<Item> items) {
             double discount = 0;
             for (Item item : items) {
                 if (item instanceof CartItem) {
@@ -125,7 +125,7 @@ public class ShoppingCartTest {
         * 15% off on (5th) n-th item
         * */
         @Override
-        public double apply(List<Item> items) {
+        public double calculateDiscount(List<Item> items) {
             double discount = 0;
             int bookCartCount = 0;
             for (Item item : items) {
